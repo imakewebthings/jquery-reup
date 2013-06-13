@@ -9,7 +9,6 @@ describe('jQuery ReUp', function() {
   describe('with default options', function() {
     beforeEach(function() {
       $reup = $input.reup();
-
     });
 
     it('returns the replacement div', function() {
@@ -40,7 +39,7 @@ describe('jQuery ReUp', function() {
     });
 
     it('points the label [for] attribute to the input', function() {
-      expect($input).toHaveAttr('for', 'test_id');
+      expect($reup.find('.reup-label')).toHaveAttr('for', 'test_id');
     });
   });
 

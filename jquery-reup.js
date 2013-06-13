@@ -18,6 +18,33 @@
       var replacements = [];
       var idCounter = 0;
 
+      var mergeOptions = function($input) {
+        var declareds = {
+          labelText: $input.data('reup-label-text')
+        };
+        return $.extend({}, $.fn.reup.defaults, declareds, overrides);
+      };
+
+      var buildReplacement = function(options) {
+        return $(options.template.replace(
+          /{{ *input *}}/,
+          '<div class="input-placeholder"></div>'
+        ));
+      };
+
+      var replaceInput = function($replacement, $input, options) {
+        $input.after($replacement);
+        $replacement.find('.input-placeholder').append($input);
+        $replacement.find(options.labelSelector)
+          .text(options.labelText)
+          .attr('for', $input[0].id);
+        $input.unwrap();
+        $input.css({
+          position: 'absolute',
+          left: '-99999px'
+        });
+      };
+
       var updateFilename = function($replacement, $input, options) {
         $(options.filenameSelector).text(options.filenameFilter($input.val()));
       };
@@ -30,29 +57,13 @@
 
       this.each(function() {
         var $this = $(this);
-        var declareds = {
-          labelText: $this.data('reup-label-text')
-        };
-        var options = $.extend({}, $.fn.reup.defaults, declareds, overrides);
-        var template = options.template.replace(
-          /{{ *input *}}/,
-          '<div class="input-placeholder"></div>'
-        );
-        var $replacement = $(template);
+        var options = mergeOptions($this);
+        var $replacement = buildReplacement(options);
 
-        $this.after($replacement);
-        $replacement.find('.input-placeholder').append($this);
-        $this.unwrap();
-        $this.css({
-          position: 'absolute',
-          left: '-99999px'
-        });
-
-        updateFilename($replacement, $this, options);
         ensureId(this, options);
-        $replacement.find(options.labelSelector)
-          .text(options.labelText)
-          .attr('for', this.id);
+        replaceInput($replacement, $this, options);
+        updateFilename($replacement, $this, options);
+        
         $this.on('change.reup', function() {
           updateFilename($replacement, $this, options);
         });

@@ -28,7 +28,7 @@ This will turn a file input...
 
 The `label` acts as the upload button, and the `span` as the filename field. The original file input is hidden offscreen but continues to serve its purpose in the form.
 
-If the file input has an id, the label will use it in its `for` attribute. If the file input has no id, one will be generated for it.
+The `label` will use the `input`'s id as its `for` attribute. If the file input has no id, one will be generated for it.
 
 ## Options
 

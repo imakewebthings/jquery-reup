@@ -14,6 +14,12 @@
     return factory(root.jQuery, root);
   })(this, function($, window) {
 
+    var brokenFirefox = (function() {
+      var ua = window.navigator.userAgent;
+      var ff = ua.match(/Firefox.*/);
+      return ff && ff.length && parseFloat(ff[0].split('/')[1]) < 23; 
+    })();
+
     $.fn.reup = function(overrides) {      
       var replacements = [];
       var idCounter = 0;
@@ -55,6 +61,14 @@
         }
       };
 
+      var fixLabelClick = function($replacement, $input, options) {
+        $replacement.on('click.reup', options.labelSelector, function(event) {
+          setTimeout(function() {
+            $input.click();
+          }, 1);
+        });
+      }
+
       this.each(function() {
         var $this = $(this);
         var options = mergeOptions($this);
@@ -65,8 +79,12 @@
         updateFilename($replacement, $this, options);
         
         $this.on('change.reup', function() {
-          updateFilename($replacement, $this, options);
+          updateFilename($replacement.find(options.labelSelector), $this);
         });
+
+        if (brokenFirefox) {
+          fixLabelClick($replacement, $this, options);
+        }
 
         replacements.push($replacement[0]);
       });

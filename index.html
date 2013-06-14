@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <title>jQuery ReUp</title>
+  <meta charset="urf-8">
+  <style type="text/css">
+    * {
+      margin:0;
+      padding:0;
+    }
+
+    body {
+      font-family:'Helvetica Neue', sans-serif;
+      font-size:18px;
+      color:#666;
+      line-height:1.5;
+    }
+
+    .wrapper {
+      width:320px;
+      margin:0 auto;
+      overflow:hidden;
+    }
+
+    .panel {
+      margin:32px auto 16px auto;
+      width:300px;
+      padding:0 10px;
+    }
+
+    h1 {
+      font-size:48px;
+      color:#111;
+      line-height:1;
+      margin-bottom:3px;
+    }
+
+    h2 {
+      line-height:1;
+    }
+
+    .version {
+      display:block;
+      font-size:11px;
+    }
+
+    p {
+      margin:16px 0;
+    }
+
+    .links h2 {
+      position:absolute;
+      left:-99999px;
+    }
+
+    .links ul {
+      list-style:none;
+    }
+
+    .links li {
+      margin:6px 0;
+    }
+
+    .links a {
+      display:block;
+      padding:7px 10px;
+      background:#888;
+      color:#fff;
+      text-decoration:none;
+    }
+
+    .links a:hover, .links a:focus {
+      background:#111;
+    }
+
+    .tests h2 {
+      color:#111;
+      margin-bottom:4px;
+    }
+
+    .tests iframe {
+      height:460px;
+    }
+
+    .reup-label {
+      display:inline-block;
+      background:#888;
+      color:#fff;
+      padding:7px 10px;
+      cursor:pointer;
+    }
+
+    .reup-label:hover, .reup-label:focus {
+      background:#111;
+    }
+
+    .reup-filename {
+      margin-left:10px;
+    }
+
+    @media screen and (min-width:960px) {
+      .wrapper {
+        width:960px;
+      }
+
+      .panel {
+        float:left;
+      }
+    }
+  </style> 
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="panel overview">
+      <h1>jQuery ReUp</h1>
+      <span class="version">v0.0.1</span>
+      <p>It turns this&hellip;</p>
+      <div class="plain-file">
+        <input type="file">
+      </div>
+      <p>&hellip;into this&hellip;</p>
+      <div class="reup-file">
+        <input type="file">
+      </div>
+      <p>&hellip;without making style assumptions.</p>
+    </div>
+
+    <div class="panel links">
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://github.com/imakewebthings/jquery-reup/zipball/latest">Download</a></li>
+        <li><a href="https://github.com/imakewebthings/jquery-reup">GitHub</a></li>
+        <li><a href="https://github.com/imakewebthings/jquery-reup/blob/master/README.md">Docs</a></li>
+      </ul>
+    </div>
+
+    <div class="panel tests">
+      <h2>Tests</h2>
+      <iframe src="./test/" frameborder="0"></iframe>
+    </div>
+  </div>
+
+  <script src="test/lib/jquery/jquery.js"></script>
+  <script src="jquery-reup.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('.reup-file input').reup();
+    });
+  </script>
+</body>
+</html>

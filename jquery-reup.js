@@ -1,5 +1,5 @@
 /*!
-  jQuery ReUp - v0.0.1
+  jQuery ReUp - v0.0.2
   © 2013 - Caleb Troughton
   MIT Licensed: http://opensource.org/licenses/MIT
   For more information, visit https://github.com/imakewebthings/jquery-reup

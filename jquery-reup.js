@@ -1,5 +1,5 @@
 /*!
-  jQuery ReUp - v0.0.2
+  jQuery ReUp - v0.0.3
   © 2013 - Caleb Troughton
   MIT Licensed: http://opensource.org/licenses/MIT
   For more information, visit https://github.com/imakewebthings/jquery-reup
@@ -52,7 +52,8 @@
       };
 
       var updateFilename = function($replacement, $input, options) {
-        $(options.filenameSelector).text(options.filenameFilter($input.val()));
+        $replacement.find(options.filenameSelector)
+          .text(options.filenameFilter($input.val()));
       };
 
       var ensureId = function(input, options) {
@@ -79,7 +80,7 @@
         updateFilename($replacement, $this, options);
         
         $this.on('change.reup', function() {
-          updateFilename($replacement.find(options.labelSelector), $this);
+          updateFilename($replacement, $this, options);
         });
 
         if (brokenFirefox) {

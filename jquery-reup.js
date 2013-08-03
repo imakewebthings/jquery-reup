@@ -18,7 +18,7 @@
       var ua = window.navigator.userAgent;
       var ff = ua.match(/Firefox.*/);
       var mac = ua.match(/Macintosh/);
-      return mac && mac.length && ff && ff.length && parseFloat(ff[0].split('/')[1]) < 23; 
+      return mac && mac.length && ff && ff.length && parseFloat(ff[0].split('/')[1]) < 22; 
     })();
 
     $.fn.reup = function(overrides) {      

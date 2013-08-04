@@ -73,6 +73,9 @@ This repository includes no CSS. It is up to you to style the upload replacement
 
 ## Changelog
 
+- 0.0.4:
+    - Adjust Firefox workaround to prevent double windows in OSX FF 22 and Win FF. ([choage](https://github.com/choage))
+    - Standardize default wording around "Choose" and "Chosen."
 - 0.0.3: Fixed error in filename replacement.
 - 0.0.2: Add a workaround for Firefox versions before 23, which fail to open the file dialog when a label for a file input is clicked.
 - 0.0.1: Initial release.

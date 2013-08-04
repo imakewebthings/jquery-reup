@@ -101,7 +101,7 @@
       filenameSelector: '.reup-filename',
       filenameFilter: function(path) {
         if (!path) {
-          return 'No file selected';
+          return 'No file chosen';
         }
         var segments = path.split('/');
         segments = segments[segments.length - 1].split('\\');

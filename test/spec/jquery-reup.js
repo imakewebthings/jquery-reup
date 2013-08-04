@@ -24,7 +24,7 @@ describe('jQuery ReUp', function() {
     });
 
     it('creates the filename replacement', function() {
-      expect($reup.find('.reup-filename')).toHaveText('No file selected');
+      expect($reup.find('.reup-filename')).toHaveText('No file chosen');
     });
 
     it('places the input inside the replacement', function(){

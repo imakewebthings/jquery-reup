@@ -49,7 +49,7 @@ The `label` will use the `input`'s id as its `for` attribute. If the file input 
   filenameSelector: '.reup-filename',
   filenameFilter: function(path) {
     if (!path) {
-      return 'No file selected';
+      return 'No file chosen';
     }
     var segments = path.split('/');
     segments = segments[segments.length - 1].split('\\');

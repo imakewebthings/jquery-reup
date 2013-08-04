@@ -17,7 +17,8 @@
     var brokenFirefox = (function() {
       var ua = window.navigator.userAgent;
       var ff = ua.match(/Firefox.*/);
-      return ff && ff.length && parseFloat(ff[0].split('/')[1]) < 23; 
+      var mac = ua.match(/Macintosh/);
+      return mac && mac.length && ff && ff.length && parseFloat(ff[0].split('/')[1]) < 22; 
     })();
 
     $.fn.reup = function(overrides) {      
@@ -100,7 +101,7 @@
       filenameSelector: '.reup-filename',
       filenameFilter: function(path) {
         if (!path) {
-          return 'No file selected';
+          return 'No file chosen';
         }
         var segments = path.split('/');
         segments = segments[segments.length - 1].split('\\');

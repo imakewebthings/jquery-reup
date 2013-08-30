@@ -1,5 +1,5 @@
 /*!
-  jQuery ReUp - v0.0.3
+  jQuery ReUp - v0.0.4
   © 2013 - Caleb Troughton
   MIT Licensed: http://opensource.org/licenses/MIT
   For more information, visit https://github.com/imakewebthings/jquery-reup
@@ -18,10 +18,10 @@
       var ua = window.navigator.userAgent;
       var ff = ua.match(/Firefox.*/);
       var mac = ua.match(/Macintosh/);
-      return mac && mac.length && ff && ff.length && parseFloat(ff[0].split('/')[1]) < 22; 
+      return mac && mac.length && ff && ff.length && parseFloat(ff[0].split('/')[1]) < 22;
     })();
 
-    $.fn.reup = function(overrides) {      
+    $.fn.reup = function(overrides) {
       var replacements = [];
       var idCounter = 0;
 
@@ -79,7 +79,7 @@
         ensureId(this, options);
         replaceInput($replacement, $this, options);
         updateFilename($replacement, $this, options);
-        
+
         $this.on('change.reup', function() {
           updateFilename($replacement, $this, options);
         });
